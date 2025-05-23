@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+      /* Animation for page load */
+      opacity: 0; /* Initially hidden */
+      animation: fadeIn 0.8s forwards ease-out; /* Apply fadeIn animation */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); } /* Start slightly below and transparent */
+      to { opacity: 1; transform: translateY(0); } /* End at original position and fully visible */
+    }
+
+    .signup-box {
+      width: 100%;
+      max-width: 360px;
+      background: #f0f9f7;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .signup-box img {
+      width: 75px;
+      margin-bottom: 18px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 12px 10px 36px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #20b57e;
+      box-shadow: 0 0 6px rgba(32, 181, 126, 0.5);
+    }
+
+    .input-group.paste-btn-wrap input {
+      padding-right: 80px;
+    }
+
+    .paste-btn {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 6px 12px;
+      background-color: #20b57e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #1a8e5f, #4dd49c);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      animation: pulse 1.8s infinite;
+      margin-bottom: 20px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      line-height: normal;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .partners {
+      margin: 25px 0 15px;
+    }
+
+    .partners .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .partners .divider::before,
+    .partners .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #ccc;
+    }
+
+    .partners .divider span {
+      padding: 0 10px;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .partners-logos {
+      display: flex;
+      justify-content: space-around;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .partners-logos a {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 3px;
+        background-color: #fff;
+        text-decoration: none;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .partners-logos a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .partners-logos img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .signin-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .signin-footer a.signup-btn {
+      width: auto;
+      padding: 8px 16px;
+      font-size: 14px;
+      margin-bottom: 0;
+      animation: none;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      text-align: left;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    label span {
+      color: red;
+      margin-left: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="signup logo" />
+
+    <form>
+      <label for="username">User Name<span>*</span></label>
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="Username" required>
+      </div>
+
+      <label for="mobile">Mobile Number</label>
+      <div class="input-group paste-btn-wrap">
+        <i class="fas fa-phone-alt"></i>
+        <input type="tel" id="mobile" placeholder="Mobile Number" required>
+        <button type="button" class="paste-btn" onclick="pasteClipboard()">Paste</button>
+      </div>
+
+      <label for="email">Email Address</label>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" placeholder="Email Address" required>
+      </div>
+
+      <label for="password">Password</label>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+
+      <a href="dashboard.html" class="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+    </form>
+
+    <div class="partners">
+      <div class="divider"><span>Our Partners</span></div>
+      <div class="partners-logos">
+        <a href="dashboard.html"><img src="images/islami.jpeg" alt="Islami Bank"></a>
+        <a href="dashboard.html"><img src="images/pubali.jpeg" alt="Sonali Bank"></a>
+        <a href="dashboard.html"><img src="images/datchbangla.jpeg" alt="Dutch-Bangla Bank"></a>
+        <a href="dashboard.html"><img src="images/tbl.jpeg" alt="Trust Bank"></a>
+      </div>
+    </div>
+
+    <div class="signin-footer">
+      <span>Already have an account?</span>
+      <a class="signup-btn" href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+    </div>
+
+  </div>
+
+  <script>
+    function pasteClipboard() {
+      // Check if navigator.clipboard is supported
+      if (navigator.clipboard && navigator.clipboard.readText) {
+        navigator.clipboard.readText()
+          .then(text => {
+            // Directly paste the text into the input field
+            document.getElementById("mobile").value = text;
+          })
+          .catch(err => {
+            // Optionally, log the error to the console for debugging
+            console.error("Failed to read clipboard:", err);
+            // No alert or pop-up is shown to the user
+          });
+      } else {
+        // Fallback for browsers that do not support navigator.clipboard.readText()
+        // You might consider a different approach for older browsers,
+        // or simply do nothing as modern browsers widely support this.
+        console.warn("Clipboard API not supported by this browser.");
+      }
+    }
+  </script>
+
+</body>
+</html>
